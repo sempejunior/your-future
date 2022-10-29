@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import Home from './views/Home';
 import Dashboard from './views/Dashboard';
 import { Header } from "./components/Header/Header";
-import { SignOut } from "@aws-amplify/ui-react/dist/types/components/Authenticator/Authenticator";
+import LandingPage from "./views/LandingPage";
 
 
 
@@ -17,6 +17,7 @@ function RouteValues() {
 
                 <Route element={<Home />} path="/" />
                 <Route element={<Dashboard />} path="/Dashboard" />
+                <Route element={<LandingPage />} path="/LandingPage" />
             </Routes>
         </>
     )
