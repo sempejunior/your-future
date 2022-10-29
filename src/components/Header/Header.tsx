@@ -12,25 +12,32 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
+import { Auth } from 'aws-amplify';
+
 
 const pages = ['Inserir páginas', 'Teste'];
 const settings = [
     {
         text: 'Profile',
-        href: '/profile'
+        href: '/profile',
+        isLogout: false,
     },
     {
         text: 'Account',
-        href: '/account'
+        href: '/account',
+        isLogout: false,
     },
     {
         text: 'Dashboard',
-        href: '/dashboard'
+        href: '/dashboard',
+        isLogout: false,
     },
     {
         text: 'Logout',
-        href: '/logout'
+        href: '/',
+        isLogout: true,
+
     }];
 
 
@@ -171,7 +178,16 @@ export function Header() {
                         >
                             {settings.map((setting) => (
                                 <MenuItem key={setting.text} onClick={handleCloseUserMenu}>
-                                    <Typography onClick={() => navigate(setting.href)} textAlign="center">{setting.text}</Typography>
+                                    <Typography onClick={() => {
+                                        Auth.currentAuthenticatedUser().then((user) => {
+                                            console.log('user email = ' + user.attributes.email);
+                                        });
+                                        if (setting.isLogout) {
+                                            Auth.signOut({ global: true });
+                                        }
+                                        navigate(setting.href);
+                                    }}
+                                        textAlign="center">{setting.text}</Typography>
                                 </MenuItem>
                             ))}
                         </Menu>

@@ -1,7 +1,8 @@
-import { useState } from 'react'
 import RouteValues from './Routes';
 import "./global.css";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { Authenticator } from '@aws-amplify/ui-react';
+import '@aws-amplify/ui-react/styles.css';
 
 const darkTheme = createTheme({
   palette: {
@@ -12,7 +13,11 @@ const darkTheme = createTheme({
 function App() {
   return (
     <ThemeProvider theme={darkTheme}>
-      <RouteValues />
+      <Authenticator>
+        {() => (
+          <RouteValues />
+        )}
+      </Authenticator>
     </ThemeProvider>
   )
 }

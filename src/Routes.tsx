@@ -1,15 +1,24 @@
 import { Route, Routes } from "react-router-dom";
 
 import Home from './views/Home';
-import Teste from './views/Teste';
 import Dashboard from './views/Dashboard';
+import { Header } from "./components/Header/Header";
+import { SignOut } from "@aws-amplify/ui-react/dist/types/components/Authenticator/Authenticator";
 
-const RouteValues = () => {
+
+
+
+function RouteValues() {
+
     return (
-        <Routes>
-            <Route element={<Home />} path="/" />
-            <Route element={<Dashboard />} path="/Dashboard" />
-        </Routes>
+        <>
+            <Header></Header>
+            <Routes>
+
+                <Route element={<Home />} path="/" />
+                <Route element={<Dashboard />} path="/Dashboard" />
+            </Routes>
+        </>
     )
 }
 
