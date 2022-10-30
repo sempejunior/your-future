@@ -1,6 +1,6 @@
 {
   "auth": {
-    "yourfuturede6898f3": {
+    "yourfuturef31949c9": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],

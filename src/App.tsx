@@ -13,13 +13,11 @@ const darkTheme = createTheme({
 function App() {
   return (
     <ThemeProvider theme={darkTheme}>
-      <Authenticator>
-        {() => (
-          <RouteValues />
-        )}
-      </Authenticator>
+      <Authenticator.Provider>
+        <RouteValues />
+      </Authenticator.Provider>
     </ThemeProvider>
   )
 }
 
-export default App
+export default App;
